@@ -1,4 +1,4 @@
-//v11
+// /workspace/wdb/wdbmaster/YelpCamp/v11ngDeploy
 var express     = require("express"),
     app         = express(),
     bodyParser  = require("body-parser"),
@@ -16,9 +16,20 @@ var express     = require("express"),
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
+
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://NGBerlin:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
     
-mongoose.connect("mongodb://localhost/yelp_camp_v10", 
-	{useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect("mongodb://localhost/yelp_camp_v10", 
+// 	{useNewUrlParser: true, useUnifiedTopology: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));

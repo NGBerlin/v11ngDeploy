@@ -18,23 +18,42 @@ var commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index")
 
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
+// mongoDB as copied
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology: true});
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
+
+// From unsivil via Discord using mongoose
+const mongoose = require('mongoose');
+
+const URI = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
+
+const db = mongoose.connect(uri, { useNewUrlParser: true , useUnifiedTopology: true});
+db.connection.on('connected', () => {
+    console.log('[mongoose] Connected to DB.');
+});
+db.connection.on('error', (err) => {
+    console.log('[mongoose] Error connecting to DB: ' + err);
 });
 
-    
+//Local mongoose mongoDB
+
 // mongoose.connect("mongodb://localhost/yelp_camp_v10", 
 // 	{useNewUrlParser: true, useUnifiedTopology: true });
-app.use(bodyParser.urlencoded({extended: true}));
-app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/public"));
-app.use(methodOverride("_method"));
-app.use(flash());
+
+// app.use(bodyParser.urlencoded({extended: true}));
+// app.set("view engine", "ejs");
+// app.use(express.static(__dirname + "/public"));
+// app.use(methodOverride("_method"));
+// app.use(flash());
+
 // seedDB(); //seed the database
 
 // PASSPORT CONFIGURATION

@@ -82,11 +82,11 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
 //Run locally from goorm
-app.listen(3000, function(){
-	console.log("server listeningon port 3000")})
+// app.listen(3000, function(){
+// 	console.log("server listeningon port 3000")})
 
 //run via Heroku
 var port = process.env.PORT || 3000;
-// app.listen(port, function () {
-//   console.log("Server Has Started!");
-// });
+app.listen(port, function () {
+  console.log("Server Has Started!");
+});

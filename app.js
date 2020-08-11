@@ -20,14 +20,14 @@ var commentRoutes    = require("./routes/comments"),
 
 // mongoDB as copied
 
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology: true});
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology: true});
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 
 
 // From unsivil via Discord using mongoose
@@ -46,8 +46,8 @@ var commentRoutes    = require("./routes/comments"),
 
 //Local mongoose mongoDB
 
-mongoose.connect("mongodb://localhost/yelp_camp_v10", 
-	{useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect("mongodb://localhost/yelp_camp_v10", 
+// 	{useNewUrlParser: true, useUnifiedTopology: true });
 
 
 

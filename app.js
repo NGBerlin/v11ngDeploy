@@ -12,31 +12,25 @@ var express     = require("express"),
     User        = require("./models/user"),
     seedDB      = require("./seeds")
     
-//from stack overflow "flash is not a methodOverride"
-var flash = require('connect-flash');
-app.use(flash());
-
-
 //requiring routes
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
 
 
-// // mongoDB as copied
+// mongoDB as copied
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology: true});
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology: true});
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
 
 
 // From unsivil via Discord using mongoose
-
 // const mongoose = require('mongoose');
 
 // const URI = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
@@ -49,17 +43,16 @@ client.connect(err => {
 //     console.log('[mongoose] Error connecting to DB: ' + err);
 // });
 
-
 //Local mongoose mongoDB
 
-// mongoose.connect("mongodb://localhost/yelp_camp_v10", 
-// 	{useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost/yelp_camp_v10", 
+	{useNewUrlParser: true, useUnifiedTopology: true });
 
-// app.use(bodyParser.urlencoded({extended: true}));
-// app.set("view engine", "ejs");
-// app.use(express.static(__dirname + "/public"));
-// app.use(methodOverride("_method"));
-// app.use(flash());
+app.use(bodyParser.urlencoded({extended: true}));
+app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
+app.use(flash());
 
 
 
@@ -91,7 +84,7 @@ app.listen(3000, function(){
 	console.log("server listeningon port 3000")})
 
 //run via Heroku
-// var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3000;
 // app.listen(port, function () {
 //   console.log("Server Has Started!");
 // });

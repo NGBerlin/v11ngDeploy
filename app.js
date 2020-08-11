@@ -12,13 +12,18 @@ var express     = require("express"),
     User        = require("./models/user"),
     seedDB      = require("./seeds")
     
+//from stack overflow "flash is not a methodOverride"
+var flash = require('connect-flash');
+app.use(flash());
+
+
 //requiring routes
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
 
 
-// mongoDB as copied
+// // mongoDB as copied
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
@@ -82,11 +87,11 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
 //Run locally from goorm
-// app.listen(3000, function(){
-// 	console.log("server listeningon port 3000")})
+app.listen(3000, function(){
+	console.log("server listeningon port 3000")})
 
 //run via Heroku
-var port = process.env.PORT || 3000;
-app.listen(port, function () {
-  console.log("Server Has Started!");
-});
+// var port = process.env.PORT || 3000;
+// app.listen(port, function () {
+//   console.log("Server Has Started!");
+// });

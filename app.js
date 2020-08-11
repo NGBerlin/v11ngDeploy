@@ -31,9 +31,10 @@ var commentRoutes    = require("./routes/comments"),
 
 
 // From unsivil via Discord using mongoose
-// const mongoose = require('mongoose');
+// const mongoose = require('mongoose'); [is declared already above]
 
-// const URI = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
+
+// const uri = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
 
 // const db = mongoose.connect(uri, { useNewUrlParser: true , useUnifiedTopology: true});
 // db.connection.on('connected', () => {
@@ -48,13 +49,14 @@ var commentRoutes    = require("./routes/comments"),
 mongoose.connect("mongodb://localhost/yelp_camp_v10", 
 	{useNewUrlParser: true, useUnifiedTopology: true });
 
+
+
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
-
-
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({

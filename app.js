@@ -18,27 +18,27 @@ var commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index")
 
 
-// mongoDB as copied
+mongoDB as copied
 
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology: true});
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
-
-mongoose.connect("mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority", {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
-}).then(() => {
-  console.log("Connected to DB!");
-}).catch(err => {
-  console.log("ERROR", err.message);
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology: true});
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
 });
+
+// mongoose.connect("mongodb+srv://NeilGreer:Ng232117@clearport1.sxp3s.mongodb.net/clearport11?retryWrites=true&w=majority", {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false
+// }).then(() => {
+//   console.log("Connected to DB!");
+// }).catch(err => {
+//   console.log("ERROR", err.message);
+// });
 
 // From unsivil via Discord using mongoose
 // const mongoose = require('mongoose'); [is declared already above]
